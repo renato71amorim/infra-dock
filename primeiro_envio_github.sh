@@ -13,14 +13,25 @@ echo "Testando conexão SSH com GitHub..."
 ssh -T git@github.com
 
 # Cria estrutura do projeto e faz o primeiro envio via SSH
-mkdir -p web-app/{frontend/src,backend/app,database,mysql,redis,nginx,certbot,monitoring/{prometheus,grafana/provisioning/{dashboards,datasources}}} \
-&& touch web-app/{.env,README.md,stack.yml} \
-&& touch web-app/frontend/Dockerfile \
-&& touch web-app/backend/Dockerfile \
-&& touch web-app/database/init.sql \
-&& touch web-app/mysql/init.sql \
-&& touch web-app/nginx/nginx.conf \
-&& touch web-app/monitoring/prometheus/prometheus.yml
+mkdir -p infra-dock/frontend/src \
+         infra-dock/backend/app \
+         infra-dock/database \
+         infra-dock/mysql \
+         infra-dock/redis \
+         infra-dock/nginx \
+         infra-dock/certbot \
+         infra-dock/monitoring/prometheus \
+         infra-dock/monitoring/grafana/provisioning/dashboards \
+         infra-dock/monitoring/grafana/provisioning/datasources \
+&& touch infra-dock/.env \
+         infra-dock/README.md \
+         infra-dock/stack.yml \
+         infra-dock/frontend/Dockerfile \
+         infra-dock/backend/Dockerfile \
+         infra-dock/database/init.sql \
+         infra-dock/mysql/init.sql \
+         infra-dock/nginx/nginx.conf \
+         infra-dock/monitoring/prometheus/prometheus.yml
 
 # Verifica se o comando ssh foi bem-sucedido
 if [ $? -eq 1 ] || [ $? -eq 0 ]; then
